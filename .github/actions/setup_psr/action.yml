@@ -19,7 +19,7 @@ inputs:
   psr_version:
     description: "Which python semantic release version to use."
     required: True
-    default: 1.1.13
+    default: 7.28.1
 
 runs:
   using: composite
@@ -45,5 +45,8 @@ runs:
         git config --global user.email 'rbpatt2019@users.noreply.github.com'
     - name: Python Semantic Release
       shell: bash
+      env:
+        REPOSITORY_USERNAME: __token__
+        REPOSITORY_PASSWORD: ${{ inputs.pypi_token }}
       run: |
         semantic-release -v DEBUG publish
