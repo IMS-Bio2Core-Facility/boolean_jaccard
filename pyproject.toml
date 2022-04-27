@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "boolean_jaccard"
-version = "0.0.0"
+version = "0.1.0"
 packages=[{include = "jaccard"}]
 description = "Jaccard metric calculations for boolean vectors"
 license = "MIT"

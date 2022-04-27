@@ -10,7 +10,7 @@ sys.path.insert(0, os.path.abspath("../"))
 project = "boolean_jaccard"
 author = "Ryan B Patterson-Cross"
 copyright = "2021-2022, IMS-MRL Bioinformatics and Biostatistic Core"
-version = "0.0.0"
+version = "0.1.0"
 extensions = [
     "sphinx_rtd_theme",
     "sphinx.ext.autodoc",
