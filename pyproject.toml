@@ -1,0 +1,115 @@
+[tool.poetry]
+name = "boolean_jaccard"
+version = "0.0.0"
+packages=[{include = "jaccard"}]
+description = "Jaccard metric calculations for boolean vectors"
+license = "MIT"
+authors = ["rbpatt2019 <rb.patterson.cross@gmail.com>"]
+readme = "README.md"
+repository = "https://github.com/IMS-Bio2Core-Facility/boolean_jaccard"
+documentation = "https://boolean_jaccard.readthedocs.io/en/latest/"
+homepage = ""
+classifiers = [
+        "Development Status :: 5 - Production/Stable",
+        "License :: OSI Approved :: MIT License",
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Environment :: Console",
+        "Intended Audience :: Science/Research",
+        "Operating System :: OS Independent",
+        "Topic :: Scientific/Engineering",
+        "Topic :: Scientific/Engineering :: Bio-Informatics",
+        "Typing :: Typed",
+]
+
+[tool.poetry.dependencies]
+python = ">=3.8.0,<3.11"
+numpy = "^1.22.3"
+pandas = "^1.4.2"
+
+[tool.poetry.dev-dependencies]
+nox = "^2022"
+pre-commit = "^2.13.0"
+commitizen = "^2.17.13"
+pytest = "^7.1"
+pytest-xdist = "2.5.0"
+pytest-clarity = "^1.0.1"
+pytest-sugar = "^0"
+coverage = "^6.2"
+pytest-cov = "^3.0.0"
+pytest-mock = "^3.6.1"
+xdoctest = "^1.0.0"
+flake8 = "^4.0.1"
+pyproject-flake8 = "^0.0.1a4"
+flake8-annotations = "^2.6.2"
+flake8-bandit = "^3.0.0"
+flake8-bugbear = "^22.4.5"
+flake8-comprehensions = "^3.5.0"
+flake8-docstrings = "^1.6.0"
+flake8-pytest-style = "^1.5.0"
+flake8-spellcheck = "^0"
+darglint = "^1.8.0"
+mypy = "^0"
+isort = "^5.9.3"
+black = "^22.3.0"
+safety = "^1.10.3"
+tomli = "^1.2.0"
+Sphinx = "^4.1.2"
+myst-parser = "^0"
+sphinx-rtd-theme = "^1.0.0"
+
+[tool.semantic_release]
+branch = "main"
+version_variable = [
+        "jaccard/__init__.py:__version__",
+        "docs/conf.py:version"
+]
+version_toml = [
+        "pyproject.toml:tool.poetry.version"
+]
+changelog_file = "CHANGELOG.md"
+upload_to_pypi = true
+upload_to_release = true
+build_command = "poetry build"
+
+[tool.coverage.run]
+branch = true
+source = ["jaccard"]
+
+[tool.coverage.report]
+show_missing = true
+
+[tool.pytest.ini_options]
+addopts = """
+-n auto
+-vv
+--ignore=docs
+--xdoctest
+--cov=jaccard
+--cov-report=term
+--cov-report=xml
+"""
+
+[tool.isort]
+profile = "black"
+skip_gitignore = true
+float_to_top = false
+
+[tool.flake8]
+select = "ANN,B,B9,C,C4,D,DAR,F,S,SC"
+ignore = "ANN101,S101,B950"
+exclude = "docs/conf.py"
+max-line-length = 88
+max-complexity = 10
+docstring-convention = "numpy"
+docstring-style = "numpy"
+strictness = "short"
+dictionaries = "en_US,python,technical"
+spellcheck-targets = "comments"
+
+[build-system]
+requires = ["setuptools", "poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
